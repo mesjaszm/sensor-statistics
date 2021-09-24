@@ -26,7 +26,7 @@ object Main extends App {
       // fetch all csv files
       Directory.ls(path).filter(_.toString.endsWith(".csv")).map(_.toFile)
         .via(ReadFilesFlow.readFiles)
-        .runForeach(i => println(i.toPrintableString()))
+        .runForeach(i => println(i.toPrintableString))
         .onComplete(_ => system.terminate)
     } catch {
       case t: Throwable =>
